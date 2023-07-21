@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "namedentitydeathmessages",
+  "version": "${version}",
+  "name": "NamedEntityDeathMessages",
+  "description": "NamedEntityDeathMessages",
+  "authors": [
+    {
+      "name": "p0t4t0sandwich",
+      "contact": {
+        "sources": "https://github.com/p0t4t0sandwich/",
+        "homepage": "https://links.sperrer.ca/"
+      }
+    }
+  ],
+  "contact": {
+    "repo": "https://github.com/p0t4t0sandwich/NamedEntityDeathMessages"
+  },
+  "license": "GPL-3",
+  "icon": "assets/NamedEntityDeathMessages/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "server": [
+      "dev.neuralnexus.namedentitydeathmessages.fabric.FabricNEDMPlugin"
+    ]
+  },
+  "mixins": [
+    "namedentitydeathmessages.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.9.0",
+    "fabric-api-base": "*",
+    "minecraft": ">=${minecraft_version}"
+  }
+}

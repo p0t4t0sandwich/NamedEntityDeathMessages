@@ -1,0 +1,7 @@
+name: NamedEntityDeathMessages
+version: '${version}'
+author: p0t4t0sandwich
+description: NamedEntityDeathMessages
+main: dev.neuralnexus.namedentitydeathmessages.bukkit.BukkitNEDMPlugin
+depend: []
+folia-supported: true

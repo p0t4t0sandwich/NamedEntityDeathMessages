@@ -26,11 +26,10 @@ replay_pid*
 # Build files
 build
 bin
+target
 
 # Gradle
 .gradle
 
 # IntelliJ IDEA
 .idea
-
-temp_build

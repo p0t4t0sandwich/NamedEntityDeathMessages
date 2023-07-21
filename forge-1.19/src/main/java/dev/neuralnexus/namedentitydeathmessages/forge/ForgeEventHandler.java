@@ -1,20 +1,11 @@
-package dev.neuralnexus.namedentitydeathmessages;
+package dev.neuralnexus.namedentitydeathmessages.forge;
 
-import static dev.neuralnexus.namedentitydeathmessages.Utils.*;
-import static net.minecraft.commands.Commands.argument;
-import static net.minecraft.commands.Commands.literal;
-
-import com.mojang.brigadier.arguments.StringArgumentType;
+import dev.neuralnexus.namedentitydeathmessages.common.Template;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-
-import java.util.Arrays;
+import net.minecraftforge.server.ServerLifecycleHooks;
 
 public class ForgeEventHandler {
     @SubscribeEvent
@@ -27,8 +18,8 @@ public class ForgeEventHandler {
                 Component attackerName = attacker.getCustomName();
 
                 String message = victimName.getString() + " was killed by " + attackerName.getString();
-                broadcastMessage(message);
-                ForgeMain.logger.info(message);
+                ServerLifecycleHooks.getCurrentServer().getPlayerList().getPlayers().forEach(player -> player.displayClientMessage(Component.empty().append(message), false));
+                Template.useLogger(message);
             }
         } catch (NullPointerException e) {
             System.out.println(e);
