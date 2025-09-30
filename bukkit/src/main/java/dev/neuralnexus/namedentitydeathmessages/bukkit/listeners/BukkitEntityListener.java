@@ -1,6 +1,6 @@
 package dev.neuralnexus.namedentitydeathmessages.bukkit.listeners;
 
-import dev.neuralnexus.namedentitydeathmessages.common.Template;
+import dev.neuralnexus.namedentitydeathmessages.common.NEDM;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,7 +18,7 @@ public class BukkitEntityListener implements Listener {
 
             String message = victimName + " was killed by " + attackerName;
             event.getEntity().getWorld().getPlayers().forEach(player -> player.sendMessage(message));
-            Template.useLogger(message);
+            NEDM.useLogger(message);
         }
     }
 }

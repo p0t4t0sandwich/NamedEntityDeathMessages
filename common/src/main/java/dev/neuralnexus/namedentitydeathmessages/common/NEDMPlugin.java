@@ -1,9 +1,7 @@
 package dev.neuralnexus.namedentitydeathmessages.common;
 
-import static dev.neuralnexus.namedentitydeathmessages.common.Utils.runTaskAsync;
-
 /**
- * The TaterAPI plugin interface.
+ * The NamedEntityDeathMessages plugin interface.
  */
 public interface NEDMPlugin {
     /**
@@ -57,46 +55,42 @@ public interface NEDMPlugin {
     void registerCommands();
 
     /**
-     * Starts the TaterAPI plugin.
+     * Starts the NamedEntityDeathMessages plugin.
      */
     default void pluginStart() {
-        runTaskAsync(() -> {
-            try {
-                useLogger("[TaterAPI] TaterAPI is running on " + getServerType() + "!");
+        try {
+            useLogger("[NamedEntityDeathMessages] NamedEntityDeathMessages is running on " + getServerType() + "!");
 
-                // Start the TaterAPI
-                Template.start(pluginConfigPath(), pluginLogger());
+            // Start the NamedEntityDeathMessages
+            NEDM.start(pluginLogger());
 
-                // Register hooks
-                registerHooks();
+            // Register hooks
+            registerHooks();
 
-                // Register event listeners
-                registerEventListeners();
+            // Register event listeners
+            registerEventListeners();
 
-                // Register commands
-                registerCommands();
+            // Register commands
+            registerCommands();
 
-                useLogger("[TaterAPI] TaterAPI has been enabled!");
+            useLogger("[NamedEntityDeathMessages] NamedEntityDeathMessages has been enabled!");
 
-            } catch (Exception e) {
-                System.err.println(e);
-                e.printStackTrace();
-            }
-        });
+        } catch (Exception e) {
+            System.err.println(e);
+            e.printStackTrace();
+        }
     }
 
     /**
-     * Stops the TaterAPI plugin.
+     * Stops the NamedEntityDeathMessages plugin.
      */
     default void pluginStop() {
-        runTaskAsync(() -> {
-            try {
-                Template.stop();
-                useLogger("[TaterAPI] TaterAPI has been disabled!");
-            } catch (Exception e) {
-                System.err.println(e);
-                e.printStackTrace();
-            }
-        });
+        try {
+            NEDM.stop();
+            useLogger("[NamedEntityDeathMessages] NamedEntityDeathMessages has been disabled!");
+        } catch (Exception e) {
+            System.err.println(e);
+            e.printStackTrace();
+        }
     }
 }

@@ -1,6 +1,6 @@
 package dev.neuralnexus.namedentitydeathmessages.fabric.listeners.entity;
 
-import dev.neuralnexus.namedentitydeathmessages.common.Template;
+import dev.neuralnexus.namedentitydeathmessages.common.NEDM;
 import dev.neuralnexus.namedentitydeathmessages.fabric.FabricNEDMPlugin;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -22,7 +22,7 @@ public class FabricEntityListener {
 
                 String message = victimName.getString() + " was killed by " + attackerName.getString();
                 FabricNEDMPlugin.server.getPlayerManager().getPlayerList().forEach(player -> player.sendMessage(Text.of(message), false));
-                Template.useLogger(message);
+                NEDM.useLogger(message);
             }
         } catch (NullPointerException e) {
             System.out.println(e);

@@ -1,18 +1,18 @@
 package dev.neuralnexus.namedentitydeathmessages.common.api;
 
-import dev.neuralnexus.namedentitydeathmessages.common.Template;
+import dev.neuralnexus.namedentitydeathmessages.common.NEDM;
 
 /**
  * Template API Provider
  */
-public class TemplateAPIProvider {
-    private static Template instance = null;
+public class NEDMAPIProvider {
+    private static NEDM instance = null;
 
     /**
      * Get the instance of Template
      * @return The instance of Template
      */
-    public static Template get() {
+    public static NEDM get() {
         if (instance == null) {
             throw new NotLoadedException();
         }
@@ -23,15 +23,15 @@ public class TemplateAPIProvider {
      * DO NOT USE THIS METHOD, IT IS FOR INTERNAL USE ONLY
      * @param instance: The instance of Template
      */
-    public static void register(Template instance) {
-        TemplateAPIProvider.instance = instance;
+    public static void register(NEDM instance) {
+        NEDMAPIProvider.instance = instance;
     }
 
     /**
      * DO NOT USE THIS METHOD, IT IS FOR INTERNAL USE ONLY
      */
     public static void unregister() {
-        TemplateAPIProvider.instance = null;
+        NEDMAPIProvider.instance = null;
     }
 
     /**

@@ -14,55 +14,34 @@ import org.slf4j.LoggerFactory;
 public class FabricNEDMPlugin implements DedicatedServerModInitializer, NEDMPlugin {
     public static MinecraftServer server;
 
-    /**
-     * @inheritDoc
-     */
     @Override
     public Object pluginLogger() {
         return LoggerFactory.getLogger("taterapi");
     }
 
-    /**
-     * @inheritDoc
-     */
     @Override
     public String pluginConfigPath() {
         return "config";
     }
 
-    /**
-     * @inheritDoc
-     */
     @Override
     public String getServerType() {
         return "Fabric";
     }
 
-    /**
-     * @inheritDoc
-     */
     @Override
     public void registerHooks() {
         ServerLifecycleEvents.SERVER_STARTING.register(server -> FabricNEDMPlugin.server = server);
     }
 
-    /**
-     * @inheritDoc
-     */
     @Override
     public void registerEventListeners() {
         FabricEntityEvents.DEATH.register(FabricEntityListener::onEntityDeath);
     }
 
-    /**
-     * @inheritDoc
-     */
     @Override
     public void registerCommands() {}
 
-    /**
-     * @inheritDoc
-     */
     @Override
     public void onInitializeServer() {
         pluginStart();
