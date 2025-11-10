@@ -1,17 +1,11 @@
-buildscript {
-    repositories {
-        maven { url 'https://plugins.gradle.org/m2' }
-        maven { url 'https://maven.minecraftforge.net/' }
-    }
-
-    dependencies {
-        classpath('gradle.plugin.com.github.johnrengelman:shadow:7.1.2')
-        classpath('net.minecraftforge.gradle:ForgeGradle:5.1.+')
-    }
+plugins {
+    id("net.minecraftforge.gradle") version("6.+")
+    alias(libs.plugins.shadow)
 }
 
-apply(plugin: 'com.github.johnrengelman.shadow')
-apply(plugin: 'net.minecraftforge.gradle')
+base {
+    archivesName.set("NamedEntityDeathMessages-forge-${minecraftVersion}")
+}
 
 sourceCompatibility = 1.8
 targetCompatibility = 17
@@ -35,9 +29,7 @@ shadowJar {
     }
     relocate('com.google.gson', 'dev.neuralnexus.namedentitydeathmessages.lib.gson')
 
-    destinationDir(file('../target'))
-    archiveName("NamedEntityDeathMessages-${version}-forge-${minecraftVersion}.jar")
-    classifier('')
+    archiveClassifier.set("")
 }
 shadowJar.doLast {
     task ->

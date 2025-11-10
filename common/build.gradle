@@ -1,5 +1,9 @@
 plugins {
-    id('com.github.johnrengelman.shadow') version('7.1.2')
+    alias(libs.plugins.shadow)
+}
+
+base {
+    archivesName.set("NamedEntityDeathMessages-common")
 }
 
 dependencies {
@@ -10,9 +14,7 @@ dependencies {
 shadowJar {
     dependencies {}
 
-    destinationDir(file('../target'))
-    archiveName("NamedEntityDeathMessages-${version}-common.jar")
-    classifier('')
+    archiveClassifier.set("")
 }
 shadowJar.doLast {
     task ->
